@@ -64,28 +64,34 @@ export default function WochenkartePage() {
             <AnimatedSection
               key={item.tag}
               delay={i * 0.05}
-              className={`border p-6 ${item.geschlossen ? "bg-dark/5 border-border/50 opacity-60" : "bg-warm border-border"}`}
+              className={`border p-6 transition-shadow ${
+                item.geschlossen
+                  ? "bg-dark/5 border-border/40 opacity-50"
+                  : "bg-warm border-l-4 border-l-brown border-t border-r border-b border-border hover:shadow-md"
+              }`}
             >
-              <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${item.geschlossen ? "text-dark/40" : "text-olive"}`}>
+              <p className={`text-xs font-semibold uppercase tracking-widest mb-3 ${item.geschlossen ? "text-dark/30" : "text-olive"}`}>
                 {item.tag}
               </p>
               {item.geschlossen ? (
-                <p className="text-dark/40 text-sm font-medium">Geschlossen · {item.gericht}</p>
+                <p className="text-dark/35 text-sm italic">Geschlossen · {item.gericht}</p>
               ) : (
-                <p className="text-dark/70 text-sm">{item.gericht}</p>
+                <p className="text-dark text-lg font-semibold leading-snug" style={{ fontFamily: "var(--font-playfair)" }}>
+                  {item.gericht}
+                </p>
               )}
             </AnimatedSection>
           ))}
         </div>
 
-        {/* Täglich */}
-        <AnimatedSection className="mb-12">
-          <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-4">Täglich frisch</p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            {taeglich.map((item, i) => (
-              <div key={item} className="bg-warm border border-border px-5 py-4 flex items-center gap-3">
-                <span className="w-1.5 h-1.5 rounded-full bg-brown shrink-0" />
-                <p className="text-sm text-dark/80">{item}</p>
+        {/* Täglich frisch – als Banner */}
+        <AnimatedSection className="mb-12 bg-brown px-8 py-8">
+          <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-4">Täglich frisch</p>
+          <div className="flex flex-wrap gap-6">
+            {taeglich.map((item) => (
+              <div key={item} className="flex items-center gap-2">
+                <span className="w-1 h-1 bg-gold rounded-full" />
+                <p className="text-cream text-sm font-medium">{item}</p>
               </div>
             ))}
           </div>
