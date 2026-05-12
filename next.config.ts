@@ -1,10 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
+  /* Netlify's Next.js Runtime übernimmt das Deployment nativ */
 };
 
 export default nextConfig;
