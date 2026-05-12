@@ -23,70 +23,54 @@ const werte = [
 export default function UeberUnsPage() {
   return (
     <>
-      {/* ─── HERO ─── */}
-      <section className="relative h-64 md:h-80 overflow-hidden flex items-end">
+      {/* ─── HERO – Innenraum als Einstieg ─── */}
+      <section className="relative h-[70vh] min-h-[500px] overflow-hidden flex items-end">
         <Image
-          src="/backwaren.png"
-          alt="Über uns – Café Auszeit"
+          src="/innenraum.jpg"
+          alt="Gemütlicher Innenraum des Café Auszeit"
           fill
-          className="object-cover"
-          style={{ filter: "brightness(0.55)" }}
+          className="object-cover object-center"
+          style={{ filter: "brightness(0.7)" }}
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-10 w-full pt-16">
-          <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-2">Café Auszeit</p>
-          <h1
-            className="text-4xl md:text-5xl font-bold text-cream"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            Über uns
-          </h1>
+        {/* Gradient von unten damit Headline lesbar */}
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/30 to-transparent" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-12 w-full pt-16">
+          <AnimatedSection>
+            <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-3">Café Auszeit</p>
+            <h1
+              className="text-4xl md:text-6xl font-bold text-cream leading-tight"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Ein Ort zum<br />Ankommen.
+            </h1>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* ─── HAUPTBEREICH ─── */}
-      <section className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-
-        <AnimatedSection direction="left">
-          <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-3">Unsere Geschichte</p>
-          <h2
-            className="text-3xl md:text-4xl font-bold text-dark mb-6 leading-tight"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            Ein Ort zum Ankommen<br />und Wohlfühlen.
-          </h2>
-          <div className="space-y-4 text-dark/65 leading-relaxed">
-            <p>
+      {/* ─── GESCHICHTE – Text zentriert, Luft zum Atmen ─── */}
+      <section className="bg-cream py-20 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <AnimatedSection>
+            <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-4">Unsere Geschichte</p>
+            <p className="text-dark/65 leading-relaxed text-lg mb-4">
               Das Café Auszeit ist mehr als ein Café. Es ist ein Treffpunkt, ein Lieblingsplatz —
               ein Stück Zuhause mitten in Trier.
             </p>
-            <p>
+            <p className="text-dark/65 leading-relaxed">
               Seit vielen Jahren stehen wir für Qualität, Frische und echte Gastfreundschaft.
-              Ob ein gemütliches Frühstück am Nachmittag oder ein herzhafter Snack zwischendurch —
-              wir legen Wert auf beste Zutaten, hausgemachte Speisen und einen Service,
-              der von Herzen kommt.
+              Ob ein gemütliches Frühstück, ein duftender Kaffee am Nachmittag oder ein herzhafter
+              Snack zwischendurch — wir legen Wert auf beste Zutaten, hausgemachte Speisen und
+              einen Service, der von Herzen kommt.
             </p>
-            <p>
-              Wir freuen uns auf euch!
-            </p>
-          </div>
-        </AnimatedSection>
-
-        <AnimatedSection direction="right" className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src="/food7.png"
-            alt="Atmosphäre im Café Auszeit"
-            fill
-            className="object-cover"
-          />
-        </AnimatedSection>
+          </AnimatedSection>
+        </div>
       </section>
 
       {/* ─── WERTE ─── */}
       <section className="bg-warm py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <AnimatedSection className="mb-10">
+          <AnimatedSection className="mb-10 text-center">
             <h2
               className="text-2xl font-bold text-dark"
               style={{ fontFamily: "var(--font-playfair)" }}
@@ -105,17 +89,27 @@ export default function UeberUnsPage() {
         </div>
       </section>
 
-      {/* ─── PHILOSOPHIE ─── */}
-      <section className="max-w-3xl mx-auto px-6 py-16 text-center">
-        <AnimatedSection>
-          <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-4">Unsere Philosophie</p>
-          <blockquote
-            className="text-2xl md:text-3xl font-bold text-dark leading-relaxed"
-            style={{ fontFamily: "var(--font-playfair)" }}
-          >
-            &ldquo;Manchmal braucht man nur einen Kaffee<br />und eine gute Auszeit.&rdquo;
-          </blockquote>
-        </AnimatedSection>
+      {/* ─── PHILOSOPHIE – Zitat über dem Innenraum-Foto ─── */}
+      <section className="relative py-32 px-6 overflow-hidden">
+        <Image
+          src="/innenraum.jpg"
+          alt="Atmosphäre im Café Auszeit"
+          fill
+          className="object-cover object-center"
+          style={{ filter: "brightness(0.35)" }}
+        />
+        <div className="absolute inset-0 bg-dark/40" />
+        <div className="relative z-10 max-w-3xl mx-auto text-center">
+          <AnimatedSection>
+            <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-6">Unsere Philosophie</p>
+            <blockquote
+              className="text-3xl md:text-4xl font-bold text-cream leading-relaxed"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              &ldquo;Manchmal braucht man nur einen Kaffee<br />und eine gute Auszeit.&rdquo;
+            </blockquote>
+          </AnimatedSection>
+        </div>
       </section>
     </>
   );
