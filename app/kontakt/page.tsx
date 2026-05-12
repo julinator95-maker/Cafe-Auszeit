@@ -59,7 +59,7 @@ export default function KontaktPage() {
 
           <div className="flex flex-col gap-3">
             <a
-              href="tel:+49651"
+              href="tel:+4965199838440"
               className="flex items-center gap-3 bg-brown text-cream px-5 py-3 text-sm font-medium hover:bg-brown/90 transition-colors w-fit"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

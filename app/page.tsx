@@ -34,7 +34,7 @@ export default function HomePage() {
           src="/heroneu.png"
           alt="Café Auszeit Trier von außen"
           fill
-          className="object-cover object-[center_30%]"
+          className="object-cover object-[70%_15%]"
           style={{ filter: "brightness(0.6) saturate(1.2) sepia(0.1)" }}
           priority
         />
@@ -77,7 +77,7 @@ export default function HomePage() {
               Route öffnen
             </a>
             <a
-              href="tel:+49651"
+              href="tel:+4965199838440"
               className="border border-cream/50 text-cream px-6 py-3 text-sm font-medium hover:bg-cream/10 transition-colors"
             >
               Jetzt anrufen
@@ -95,16 +95,16 @@ export default function HomePage() {
           INFO-LEISTE – clean, ohne Icons
       ═══════════════════════════════════════ */}
       <section className="bg-warm border-b border-border">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap divide-x divide-border">
+        <div className="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4">
           {[
             { label: "Adresse", value: "Diedenhofener Str. 1a, 54294 Trier" },
             { label: "Mo – Fr", value: "06:00 – 18:00 Uhr" },
             { label: "Samstag", value: "07:00 – 14:00 Uhr" },
             { label: "Parkplätze", value: "Kostenlos vor dem Haus" },
           ].map((item) => (
-            <div key={item.label} className="px-5 first:pl-0 py-1">
-              <p className="text-xs font-semibold text-dark/40 uppercase tracking-widest">{item.label}</p>
-              <p className="text-sm text-dark/75 mt-0.5">{item.value}</p>
+            <div key={item.label} className="border-l-2 border-brown/20 pl-3">
+              <p className="text-xs font-semibold text-dark/40 uppercase tracking-widest mb-0.5">{item.label}</p>
+              <p className="text-sm text-dark/80 leading-snug">{item.value}</p>
             </div>
           ))}
         </div>

@@ -81,7 +81,7 @@ export default function Navbar() {
 
         {/* CTA */}
         <a
-          href="tel:+49651"
+          href="tel:+4965199838440"
           className={`hidden lg:flex items-center gap-2 text-sm font-medium px-4 py-2 transition-colors ${
             isTransparent
               ? "border border-white/50 text-white hover:bg-white/10"
@@ -121,7 +121,7 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="tel:+49651"
+            href="tel:+4965199838440"
             className="mt-2 bg-brown text-cream text-sm font-medium px-4 py-2 text-center hover:bg-brown/90 transition-colors"
           >
             Jetzt anrufen
