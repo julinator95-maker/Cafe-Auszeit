@@ -1,15 +1,19 @@
 import Image from "next/image";
 import AnimatedSection from "@/components/AnimatedSection";
 
-/* ─── Platzhalter-Wochenkarte ─── */
-/* Inhalt wird vom Kunden wöchentlich aktualisiert */
 const wochentage = [
-  { tag: "Montag", gericht: "Wird täglich frisch aktualisiert", preis: null },
-  { tag: "Dienstag", gericht: "Wird täglich frisch aktualisiert", preis: null },
-  { tag: "Mittwoch", gericht: "Wird täglich frisch aktualisiert", preis: null },
-  { tag: "Donnerstag", gericht: "Wird täglich frisch aktualisiert", preis: null },
-  { tag: "Freitag", gericht: "Wird täglich frisch aktualisiert", preis: null },
-  { tag: "Samstag", gericht: "Wird täglich frisch aktualisiert", preis: null },
+  { tag: "Montag",     gericht: "Bauerntopf",                          geschlossen: false },
+  { tag: "Dienstag",  gericht: "Würstchengulasch mit Kartoffelspalten", geschlossen: false },
+  { tag: "Mittwoch",  gericht: "Paprika-Hähnchen mit Spätzle",          geschlossen: false },
+  { tag: "Donnerstag",gericht: "Feiertag",                              geschlossen: true  },
+  { tag: "Freitag",   gericht: "Wie gewohnt für euch da",               geschlossen: false },
+  { tag: "Samstag",   gericht: "07:00 – 14:00 Uhr",                    geschlossen: false },
+];
+
+const taeglich = [
+  "Frisch zubereitete Salate",
+  "Bowls",
+  "Joghurt- & Obstbecher",
 ];
 
 export default function WochenkartePage() {
@@ -57,12 +61,35 @@ export default function WochenkartePage() {
         {/* Tages-Kacheln */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
           {wochentage.map((item, i) => (
-            <AnimatedSection key={item.tag} delay={i * 0.05} className="bg-warm border border-border p-6">
-              <p className="text-xs font-semibold text-olive uppercase tracking-widest mb-2">{item.tag}</p>
-              <p className="text-dark/50 text-sm italic">{item.gericht}</p>
+            <AnimatedSection
+              key={item.tag}
+              delay={i * 0.05}
+              className={`border p-6 ${item.geschlossen ? "bg-dark/5 border-border/50 opacity-60" : "bg-warm border-border"}`}
+            >
+              <p className={`text-xs font-semibold uppercase tracking-widest mb-2 ${item.geschlossen ? "text-dark/40" : "text-olive"}`}>
+                {item.tag}
+              </p>
+              {item.geschlossen ? (
+                <p className="text-dark/40 text-sm font-medium">Geschlossen · {item.gericht}</p>
+              ) : (
+                <p className="text-dark/70 text-sm">{item.gericht}</p>
+              )}
             </AnimatedSection>
           ))}
         </div>
+
+        {/* Täglich */}
+        <AnimatedSection className="mb-12">
+          <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-4">Täglich frisch</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {taeglich.map((item, i) => (
+              <div key={item} className="bg-warm border border-border px-5 py-4 flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-brown shrink-0" />
+                <p className="text-sm text-dark/80">{item}</p>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
 
         {/* Hinweis-Box */}
         <AnimatedSection className="bg-brown/10 border border-brown/20 p-6 text-center">
