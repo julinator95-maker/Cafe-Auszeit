@@ -22,7 +22,7 @@ export default function WochenkartePage() {
       {/* ─── HERO ─── */}
       <section className="relative h-64 md:h-80 overflow-hidden flex items-end">
         <Image
-          src="/food6.png"
+          src="/food7.png"
           alt="Wochenkarte Café Auszeit"
           fill
           className="object-cover"
