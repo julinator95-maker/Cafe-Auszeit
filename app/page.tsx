@@ -1,65 +1,314 @@
 import Image from "next/image";
+import Link from "next/link";
+import AnimatedSection from "@/components/AnimatedSection";
 
-export default function Home() {
+/* ─── Bewertungs-Daten ─── */
+const reviews = [
+  {
+    name: "Melanie G.",
+    text: "Super gemütliches Café mit einer tollen Atmosphäre und sehr freundlichem Personal. Das Frühstück ist abwechslungsreich. Wir kommen immer wieder!",
+    stars: 5,
+  },
+  {
+    name: "Thomas K.",
+    text: "Einfach immer wieder ein Genuss! Bewundere das Café am Nachmittag für einen kleinen Snack oder zum Kaffee trinken. Tolle Qualität!",
+    stars: 5,
+  },
+  {
+    name: "Julia W.",
+    text: "Mein Lieblingsfrühstück! Hochwertige Zutaten und immer ein Lächeln vom Team. Herzliche Empfehlung!",
+    stars: 5,
+  },
+];
+
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+      {/* ═══════════════════════════════════════
+          HERO – volle Bildschirmhöhe
+      ═══════════════════════════════════════ */}
+      <section className="relative h-screen min-h-[600px] flex items-center overflow-hidden">
+
+        {/* Hintergrundbild */}
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src="/heroneu.png"
+          alt="Café Auszeit Trier von außen"
+          fill
+          className="object-cover object-[center_30%]"
+          style={{ filter: "brightness(0.6) saturate(1.2) sepia(0.1)" }}
           priority
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+        {/* Warmer Gradient-Overlay von links */}
+        <div className="absolute inset-0 bg-gradient-to-r from-dark/85 via-dark/50 to-dark/10" />
+        {/* Oberer Gradient damit Navbar-Logo lesbar bleibt */}
+        <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-dark/40 to-transparent" />
+
+        {/* Inhalt */}
+        <div className="relative z-10 w-full px-10 md:px-16 pt-16 max-w-2xl">
+          <p className="text-gold text-sm font-medium tracking-widest uppercase mb-4">
+            Bistro · Café · Backshop
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+          <h1
+            className="font-heading text-5xl md:text-7xl font-bold text-cream leading-tight mb-6"
+            style={{ fontFamily: "var(--font-playfair)" }}
           >
+            Frühstück.<br />
+            Bistro.<br />
+            <span className="text-gold">Deine Auszeit.</span>
+          </h1>
+          <p className="text-cream/80 text-lg max-w-md mb-8 leading-relaxed">
+            Hausgemachte Backwaren, frische Frühstücke und
+            gute Kaffeespezialitäten – gemütlich in Trier.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href="/fruehstueckskarte"
+              className="bg-brown text-cream px-6 py-3 text-sm font-medium hover:bg-brown/90 transition-colors"
+            >
+              Zur Frühstückskarte
+            </Link>
+            <a
+              href="https://maps.google.com/?q=Diedenhofener+Str+1a+54294+Trier"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-cream/50 text-cream px-6 py-3 text-sm font-medium hover:bg-cream/10 transition-colors"
+            >
+              Route öffnen
+            </a>
+            <a
+              href="tel:+49651"
+              className="border border-cream/50 text-cream px-6 py-3 text-sm font-medium hover:bg-cream/10 transition-colors"
+            >
+              Jetzt anrufen
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll-Indikator */}
+        <div className="absolute bottom-8 right-8 flex flex-col items-center gap-2 text-cream/40">
+          <div className="w-px h-10 bg-cream/30" />
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          INFO-LEISTE – clean, ohne Icons
+      ═══════════════════════════════════════ */}
+      <section className="bg-warm border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex flex-wrap divide-x divide-border">
+          {[
+            { label: "Adresse", value: "Diedenhofener Str. 1a, 54294 Trier" },
+            { label: "Mo – Fr", value: "06:00 – 18:00 Uhr" },
+            { label: "Samstag", value: "07:00 – 14:00 Uhr" },
+            { label: "Parkplätze", value: "Kostenlos vor dem Haus" },
+          ].map((item) => (
+            <div key={item.label} className="px-5 first:pl-0 py-1">
+              <p className="text-xs font-semibold text-dark/40 uppercase tracking-widest">{item.label}</p>
+              <p className="text-sm text-dark/75 mt-0.5">{item.value}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          FRÜHSTÜCK SEKTION
+      ═══════════════════════════════════════ */}
+      <section className="bg-cream py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection>
+            <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-2">Frisch & hausgemacht</p>
+            <h2
+              className="text-4xl md:text-5xl font-bold text-dark mb-4"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Unser Frühstück
+            </h2>
+            <p className="text-dark/60 max-w-xl mb-10">
+              Süß oder herzhaft, für eine Person oder zu zweit — unsere Frühstückssets werden
+              frisch für Sie zusammengestellt.
+            </p>
+          </AnimatedSection>
+
+          {/* Foto-Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+            {[
+              { src: "/food4.png", alt: "Frühstück Etagere mit Früchten" },
+              { src: "/food3.png", alt: "Frühstück mit Joghurt und Beeren" },
+              { src: "/food6.png", label: "Herzhafte Spezialität" },
+            ].map((img, i) => (
+              <AnimatedSection key={img.src} delay={i * 0.1} className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={img.src}
+                  alt={img.alt || ""}
+                  fill
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection>
+            <Link
+              href="/fruehstueckskarte"
+              className="inline-block bg-brown text-cream px-8 py-3 text-sm font-medium hover:bg-brown/90 transition-colors"
+            >
+              Alle Frühstücke ansehen →
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          BACKWAREN – Vollbild-Banner
+      ═══════════════════════════════════════ */}
+      <section className="relative h-80 overflow-hidden">
+        <Image
+          src="/backwaren.png"
+          alt="Frische Backwaren im Café Auszeit"
+          fill
+          className="object-cover object-center"
+          style={{ filter: "brightness(0.65)" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-dark/70 to-transparent" />
+        <AnimatedSection className="absolute bottom-10 left-0 right-0 max-w-7xl mx-auto px-6">
+          <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-2">Backshop</p>
+          <h2
+            className="text-4xl font-bold text-cream"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            Frisch gebacken. Jeden Tag.
+          </h2>
+        </AnimatedSection>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          ÜBER UNS – TEASER
+      ═══════════════════════════════════════ */}
+      <section className="bg-warm py-20 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+          <AnimatedSection direction="left">
+            <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-3">Seit Jahren in Trier</p>
+            <h2
+              className="text-4xl md:text-5xl font-bold text-dark mb-5 leading-tight"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Ein Ort zum Ankommen<br />und Wohlfühlen.
+            </h2>
+            <p className="text-dark/60 leading-relaxed mb-6">
+              Das Café Auszeit ist mehr als ein Café. Es ist ein Treffpunkt, ein Lieblingsplatz —
+              ein Stück Zuhause mitten in Trier. Ob gemütliches Frühstück, duftender Kaffee
+              am Nachmittag oder ein Snack zwischendurch.
+            </p>
+            <p className="text-dark/60 leading-relaxed mb-8">
+              Wir legen Wert auf beste Zutaten, hausgemachte Speisen und einen Service,
+              der von Herzen kommt.
+            </p>
+            <Link
+              href="/ueber-uns"
+              className="inline-block border border-brown text-brown px-6 py-3 text-sm font-medium hover:bg-brown hover:text-cream transition-colors"
+            >
+              Mehr über uns
+            </Link>
+          </AnimatedSection>
+
+          <AnimatedSection direction="right" className="relative aspect-[4/3] overflow-hidden">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src="/food7.png"
+              alt="Gemütliche Atmosphäre im Café Auszeit"
+              fill
+              className="object-cover"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </AnimatedSection>
         </div>
-      </main>
-    </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          BEWERTUNGEN – TEASER
+      ═══════════════════════════════════════ */}
+      <section className="bg-cream py-20 px-6">
+        <div className="max-w-7xl mx-auto">
+          <AnimatedSection className="text-center mb-12">
+            <p className="text-olive text-xs font-semibold uppercase tracking-widest mb-2">Google Bewertungen</p>
+            <h2
+              className="text-4xl font-bold text-dark mb-3"
+              style={{ fontFamily: "var(--font-playfair)" }}
+            >
+              Was unsere Gäste sagen
+            </h2>
+            <div className="flex items-center justify-center gap-2 mt-2">
+              <span className="text-3xl font-bold text-brown">4.7</span>
+              <div className="flex gap-0.5">
+                {[1,2,3,4,5].map((s) => (
+                  <svg key={s} width="18" height="18" viewBox="0 0 24 24" fill={s <= 4 ? "#B8913A" : "#E0D3BC"}>
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                ))}
+              </div>
+              <span className="text-dark/50 text-sm">aus 630+ Bewertungen</span>
+            </div>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            {reviews.map((review, i) => (
+              <AnimatedSection key={review.name} delay={i * 0.1} className="bg-warm p-6 border border-border">
+                <div className="flex gap-0.5 mb-3">
+                  {[1,2,3,4,5].map((s) => (
+                    <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill="#B8913A">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                  ))}
+                </div>
+                <p className="text-dark/70 text-sm leading-relaxed mb-4">&ldquo;{review.text}&rdquo;</p>
+                <p className="text-xs font-semibold text-brown">{review.name}</p>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <AnimatedSection className="text-center">
+            <Link
+              href="/bewertungen"
+              className="inline-block border border-brown text-brown px-8 py-3 text-sm font-medium hover:bg-brown hover:text-cream transition-colors"
+            >
+              Alle Bewertungen ansehen
+            </Link>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          CTA-BANNER
+      ═══════════════════════════════════════ */}
+      <section className="bg-brown py-16 px-6 text-center">
+        <AnimatedSection>
+          <h2
+            className="text-3xl md:text-4xl font-bold text-cream mb-4"
+            style={{ fontFamily: "var(--font-playfair)" }}
+          >
+            Besuchen Sie uns in Trier
+          </h2>
+          <p className="text-cream/70 mb-8 max-w-md mx-auto">
+            Diedenhofener Str. 1a · 54294 Trier<br />
+            Kostenlose Parkplätze direkt vor dem Haus
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <a
+              href="https://maps.google.com/?q=Diedenhofener+Str+1a+54294+Trier"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-cream text-brown px-6 py-3 text-sm font-medium hover:bg-cream/90 transition-colors"
+            >
+              Route planen
+            </a>
+            <Link
+              href="/kontakt"
+              className="border border-cream/50 text-cream px-6 py-3 text-sm font-medium hover:bg-cream/10 transition-colors"
+            >
+              Kontakt & Anfahrt
+            </Link>
+          </div>
+        </AnimatedSection>
+      </section>
+    </>
   );
 }
