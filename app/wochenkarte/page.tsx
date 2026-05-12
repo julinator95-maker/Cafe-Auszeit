@@ -85,7 +85,7 @@ export default function WochenkartePage() {
         </div>
 
         {/* Täglich frisch – als Banner */}
-        <AnimatedSection className="mb-12 bg-brown px-8 py-8">
+        <AnimatedSection className="mb-0 bg-brown px-8 py-8">
           <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-4">Täglich frisch</p>
           <div className="flex flex-wrap gap-6">
             {taeglich.map((item) => (
@@ -95,6 +95,17 @@ export default function WochenkartePage() {
               </div>
             ))}
           </div>
+        </AnimatedSection>
+
+        {/* Foto – direkt unter dem Banner, kein Abstand */}
+        <AnimatedSection className="mb-12 relative h-64 md:h-80 overflow-hidden">
+          <Image
+            src="/food1.png"
+            alt="Joghurt- und Obstbecher im Café Auszeit"
+            fill
+            className="object-cover object-center"
+            style={{ filter: "brightness(0.92) saturate(1.1)" }}
+          />
         </AnimatedSection>
 
         {/* Hinweis-Box */}
